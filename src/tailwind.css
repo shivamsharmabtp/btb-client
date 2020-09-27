@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.profilePic {
+    background-image: url('./containers/Images/profilePic.jpeg');
+    background-size: 3rem 3rem;
+}
