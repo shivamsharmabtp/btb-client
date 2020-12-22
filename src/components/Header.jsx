@@ -1,13 +1,40 @@
+import { IconButton, Drawer } from '@material-ui/core';
 import React from 'react';
-import profilePic from './../containers/Images/profilePic.jpeg';
+import profilePic from './../containers/Images/sp3.webp';
+import SideMenu from './SideMenu';
+import SearchBar from './SearchBar';
+import MenuIcon from '@material-ui/icons/Menu';
+import { Link } from "@reach/router";
 
-export default () => {
+export default (props) => {
+    const {query} = props;
+    const [state, setState] = React.useState({
+        left: false
+      });
+    const toggleDrawer = (open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+
+        setState({ ...state, left: open });
+    };
     return (
-        <div className="w-screen shadow py-4 flex content-center justify-center">
-            <div className="flex content-center justify-center">
-                <div className="font-bold text-2xl">StudyTube</div>
-                <input className="mx-32 shadow appearance-none border rounded w-200 text-gray-700 px-4 py-2 leading-tight focus:outline-none " type="text" placeholder="Search" />
-                <div className="ml-64 h-10 w-10 cursor-pointer">
+        <div className="w-full shadow flex content-center justify-center">
+            <Drawer anchor={'left'} open={state['left']} onClose={toggleDrawer(false)}>
+                <SideMenu />
+            </Drawer>
+            <div className="flex items-center justify-between w-11/12">
+                <div className="flex items-center">
+                    <IconButton onClick={toggleDrawer(true)} style={{outline:'none'}}>
+                        <MenuIcon />
+                    </IconButton>
+                    <Link to={'/'}>
+                        <div className="font-bold text-2xl md:hidden"><span className="text-blue-700">B</span>T</div>
+                        <div className="font-bold text-2xl hidden md:block"><span className="text-blue-700">Bhakti</span>Tube</div>
+                    </Link>
+                </div>
+                <SearchBar query={query} />
+                <div className="h-10 w-10 cursor-pointer hidden md:block">
                     <img src={profilePic} className="object-fit h-10 w-10 rounded-full" alt=""/>
                 </div>
             </div>

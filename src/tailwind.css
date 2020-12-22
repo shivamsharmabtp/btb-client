@@ -6,3 +6,8 @@
     background-image: url('./containers/Images/profilePic.jpeg');
     background-size: 3rem 3rem;
 }
+
+input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+  
