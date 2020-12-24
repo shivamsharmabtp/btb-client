@@ -31,8 +31,9 @@ export default (props) => {
         
     }
     return (
-        <div className="h-64 w-3/12 mb-12 flex items-center justify-between flex-col" style={{minWidth : '370px', minHeight:'300px'}}>
+        <div className="h-64 w-3/12 mb-12 flex items-center flex-col" style={{minWidth : '370px', minHeight:'300px'}}>
             <div className="h-48" style={{width:'360px', minHeight:'200px'}}>
+            {/* <div className="h-48 md:videoPreviewBox w-full"> */}
                 { props.loading ?
                     (<Skeleton variant="rect" width={370} height={300} />) :
                 (
@@ -43,6 +44,7 @@ export default (props) => {
                 }
             </div>
             <div className="h-16 mt-2" style={{width:'360px', minHeight:'100px'}}>
+            {/* <div className="h-16 mt-2 w-full md:videoPreviewBox"> */}
                 <div className="h-12 flex">
                     <div className="h-8 w-1/12 mr-2 rounded-full">
                         {props.loading ?

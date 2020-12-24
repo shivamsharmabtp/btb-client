@@ -5,8 +5,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-import InboxIcon from '@material-ui/icons/Inbox';
+import HomeIcon from '@material-ui/icons/Home';
 import DraftsIcon from '@material-ui/icons/Drafts';
+import LiveTvIcon from '@material-ui/icons/LiveTv';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,9 +17,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
 
 export default function SimpleList() {
   const classes = useStyles();
@@ -28,25 +26,24 @@ export default function SimpleList() {
       <List component="nav" aria-label="main mailbox folders">
         <ListItem button>
           <ListItemIcon>
-            <InboxIcon />
+            <HomeIcon />
           </ListItemIcon>
-          <ListItemText primary="Inbox" />
+          <a href="/">
+            <ListItemText primary="Home" className="w-48" />
+          </a>
         </ListItem>
         <ListItem button>
           <ListItemIcon>
-            <DraftsIcon />
+            <LiveTvIcon />
           </ListItemIcon>
-          <ListItemText primary="Drafts" />
+          <a href="/channels">
+            <ListItemText primary="Channels" />
+          </a>
         </ListItem>
       </List>
       <Divider />
       <List component="nav" aria-label="secondary mailbox folders">
-        <ListItem button>
-          <ListItemText primary="Trash" />
-        </ListItem>
-        <ListItemLink href="#simple-list">
-          <ListItemText primary="Spam" />
-        </ListItemLink>
+        <span className="ml-4 font-light text-sm ml-4">© BhaktiTube 2020</span>
       </List>
     </div>
   );

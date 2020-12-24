@@ -6,12 +6,18 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import VideoPreview from './VideoPreview';
 import constants from './../constants';
 
-export default () => {
+export default (props) => {
     
     const [videoData, setVideoData] = useState([]);
 
     async function loadMore(page){
-        let videos = await fetch(constants.BASE_PATH + '/video/homePageVideos?page=' + page);
+        let url =  '';
+        if(props.type === 'recommended'){
+            url = `${constants.BASE_PATH}/video/search/recommended?page=${page}&title=${props.title}`;
+        }else{
+            url = `${constants.BASE_PATH}/video/search/homePage?page=${page}`;
+        }
+        let videos = await fetch(url);
         videos = await videos.json();
         const addVideos = [];
         for(const video of videos){

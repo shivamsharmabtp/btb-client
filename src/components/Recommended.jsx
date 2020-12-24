@@ -5,7 +5,7 @@ export default (props) => {
     return (
         <>
             <span className="ml-4">Recommended</span>
-            <VideoGrid></VideoGrid>
+            <VideoGrid type="recommended" title={props.title}></VideoGrid>
         </>
     )
 }

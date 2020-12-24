@@ -4,15 +4,6 @@ import ContainerDimensions from 'react-container-dimensions';
 
 export default (props) => {
     return (
-        // <ContainerDimensions>
-        //     {({width}) => <Youtube 
-        //         videoId={props.videoId}
-        //         opts={{
-        //             width: width,
-        //             height: width*9/16
-        //         }}
-        //     />}
-        // </ContainerDimensions>
         <ContainerDimensions>
             {({width}) => <iframe 
             title="YoutubePlayer"
@@ -25,7 +16,9 @@ export default (props) => {
             clipboard-write; 
             encrypted-media; 
             gyroscope; 
-            picture-in-picture" 
+            picture-in-picture;
+            fullscreen;
+            " 
             allowfullscreen></iframe>}
         </ContainerDimensions>
     )
