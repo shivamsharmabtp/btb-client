@@ -45,7 +45,7 @@ export default () => {
         {channels.map(channel => {
             return (
                 <div className="flex mb-4 border-b pb-2">
-                    <div className="mr-2 rounded-full shadow">
+                    <div className="mr-2 rounded-full">
                         <img src={getImgFromThumbnail(channel.thumbnails, 'min')} className="object-fit rounded-full" alt=""/>
                     </div>
                     <div className="w-11/12 ">

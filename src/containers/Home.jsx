@@ -7,7 +7,7 @@ export default () => {
     return (
         <>
         <Header />
-        <div className="flex justify-center text-sm">
+        <div className="flex justify-evenly text-sm">
             <VideoGrid />
         </div>
         </>

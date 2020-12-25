@@ -39,7 +39,7 @@ export default (props) => {
                     </div>
                 }
             >
-            <div className="flex flex-wrap md:justify-left justify-center w-12/12 overflow-hidden mt-8">
+            <div className="flex flex-wrap md:justify-left justify-evenly w-12/12 overflow-hidden mt-8">
                 {videoData.map(video => 
                     <VideoPreview key={video._id} data={video}/>
                 )}  
