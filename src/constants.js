@@ -1,24 +1,25 @@
 module.exports = {
     BASE_PATH : '/btb/api',
     getImgFromThumbnail : (thumbnails, size) => {
-        let pics;
+        let pics, url = 'https://i.ytimg.com/vi/mHO3Bspyxqo/mqdefault.jpg';
         if(thumbnails && thumbnails.length){
             pics = thumbnails[0];
         }else{
             pics = thumbnails
         }
-        if(size === 'min'){
-            return pics.default.url
-        }else if(size === 'medium'){
-            let pic = pics.medium;
-            if(pic)
-                return pic.url;
-            else{
-                pic = pics.standard;
-                return pic.url
+        if(pics){
+            if(size === 'min' && pics.default){
+                url = pics.default.url
+            }else if(size === 'medium'){
+                if(pics.medium)
+                    url = pics.medium.url;
+                else if(pics.standard){
+                    url = pics.standard.url;
+                }
             }
         }
-        
+
+        return url;        
     },
     linkify : (text) => {
         var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
