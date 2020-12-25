@@ -14,7 +14,7 @@ export default (props) => {
     }
 
     return (
-        <div className="h-64 w-3/12 mb-16 flex items-center flex-col md:videoPreviewBox w-full">
+        <div className="h-64 w-3/12 mb-20 flex items-center flex-col md:videoPreviewBox w-full">
             {/* <div className="h-48" style={{width:'360px', minHeight:'200px'}}> */}
             <div className="h-52 md:videoPreviewBox w-full">
                 { props.loading ?
@@ -46,7 +46,7 @@ export default (props) => {
                         }
                         {props.loading ?
                             (<Skeleton />) :
-                            (<div className="h-4 mt-1 font-light text-sm">Published {moment(props.data.publishedAt).fromNow()}</div>)
+                            (<div className="h-4 mt-1 font-thin text-xs">Published {moment(props.data.publishedAt).fromNow()}</div>)
                         }
                     </div>
                 </div>
