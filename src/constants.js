@@ -27,7 +27,7 @@ module.exports = {
             let shortUrl = url;
             if(shortUrl.length > 35)
                 shortUrl = url.substring(0, 35) + '...';
-            return '<a style="color:purple" href="' + url + '">' + shortUrl + '</a>';
+            return '<a style="color:##1a0dab" href="' + url + '">' + shortUrl + '</a>';
         });
     }
 }
