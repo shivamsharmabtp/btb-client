@@ -9,6 +9,7 @@ import Header from '../components/Header';
 export default () => {
     const [channels, setChannels] = useState([]);
     const [channelUrl, setChannelUrl] = useState('');
+    const [done, setDone] = useState(false);
 
     useEffect(() => {
         fetch(`${BASE_PATH}/channel/all`)
@@ -27,7 +28,7 @@ export default () => {
             body : JSON.stringify({
                 channelUrl
             })
-        })
+        }).then(() => {setDone(true)})
     }
 
     return (
@@ -36,10 +37,14 @@ export default () => {
         <div className="mt-4 mx-4">
         <h2 className="mb-2">Add Channel</h2>
             <div className="mb-10 flex flex-col">
-                {/* <div className="font-light text-sm mb-2">Note : Only channels with devotional videos will be accepted.</div> */}
-                <TextField id="standard-search" className="w-64" label="Channel URL" type="search" onChange={(e) => setChannelUrl(e.target.value)} />
-                <div className="h-2 w-full"></div>
-                <Button color="primary" style={{outline:'none'}} className="w-16 mt-2" onClick={() => saveChannel()}>Save</Button>
+                {done ? (<div>ThankYou.! We have recieved your request.</div>) : (
+                    <>
+                        <div className="font-light text-sm mb-2">Paste the Channel URL you want to add here.</div>
+                        <TextField id="standard-search" className="w-64" label="Channel URL" type="search" onChange={(e) => setChannelUrl(e.target.value)} />
+                        <div className="h-2 w-full"></div>
+                        <Button color="primary" style={{outline:'none'}} className="w-16 mt-2" onClick={() => saveChannel()}>Save</Button>
+                    </>
+                )}
             </div>
         <h2 className="mb-8">All Channels</h2>
         {channels.map(channel => {

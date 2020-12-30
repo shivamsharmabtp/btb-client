@@ -15,7 +15,7 @@ export default (props) => {
                     setResults(data);
                 });
         }else if(e.key === 'Enter'){
-            navigate(`/search?query=${query}`);
+            window.location = (`/search?query=${query}`);
         }
     }
 

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import * as queryString from 'query-string';
 import InfiniteScroll from 'react-infinite-scroller';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import NoResultImg from './../containers/Images/empty.svg';
 
 
 import Header from './../components/Header';
@@ -13,18 +14,22 @@ export default (props) => {
 
     const [videoData, setVideoData] = useState([]);
     const [hasMore, setHasMore] = useState(true);
+    const [noResult, setNoResult] = useState(false);
 
     async function loadMore(page){
         const data = await fetch(`${constants.BASE_PATH}/video/search/main?page=${page}&query=${queryParams.query}`);
         let {videos, hasMore} = await data.json();
         setVideoData([...new Set(videoData.concat(videos))]);
         setHasMore(hasMore);
+        if(page===1 && videos.length === 0){
+            setNoResult(true);
+        }
     };
 
     return (
         <>
         <Header query={queryParams.query} />
-        <div className="flex flex-col justify-center text-sm">
+        <div className="flex justify-center flex-col text-sm">
                     <InfiniteScroll
                             pageStart={0}
                             loadMore={loadMore}
@@ -42,9 +47,16 @@ export default (props) => {
                             )}  
                         </div>   
                     </InfiniteScroll>
-                    {!hasMore ? (
+                    <div>
+                    {
+                        (noResult) ? (
+                            <div className="flex justify-center mt-16"><img className="h-64" src={NoResultImg} alt="No Results Found"/></div>
+                        ):<></>
+                    }
+                    {(!hasMore) ? (
                         <div className="mt-16 w-full flex justify-center">• End of Results •</div>
                     ):(<></>)}
+                    </div>
         </div>
         </>
     )
