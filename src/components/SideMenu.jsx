@@ -6,7 +6,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import HomeIcon from '@material-ui/icons/Home';
-import DraftsIcon from '@material-ui/icons/Drafts';
+import profilePic from './../containers/Images/sp3.webp'
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,6 +23,15 @@ export default function SimpleList() {
 
   return (
     <div className={classes.root}>
+      <div className="m-4 flex">
+        <img src={profilePic} className="object-fit h-10 w-10 rounded-full" alt=""/>
+        <div className="flex flex-col ml-4">
+          <span className="text-xs">Welcome To</span>
+          <span><b><span className="text-blue-700">Bhakti</span>Tube</b></span>
+        </div>
+
+      </div>
+
       <List component="nav" aria-label="main mailbox folders">
         <ListItem button>
           <ListItemIcon>
@@ -43,7 +52,14 @@ export default function SimpleList() {
       </List>
       <Divider />
       <List component="nav" aria-label="secondary mailbox folders">
-        <span className="ml-4 font-light text-sm ml-4">© BhaktiTube 2020</span>
+        <div className="flex flex-col">
+          <div className="ml-4">
+            <a href="/about" className="text-xs font-light">About • </a>
+            <a href="/terms" className="text-xs font-light">Terms • </a>
+            <a href="/privacy" className="text-xs font-light">Privacy</a>
+          </div>
+          <span className="ml-4 font-light text-sm ml-4 mt-2">© BhaktiTube 2020</span>
+        </div>
       </List>
     </div>
   );

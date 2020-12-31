@@ -21,7 +21,7 @@ export default (props) => {
                     (<Skeleton variant="rect" width={370} height={300} />) :
                 (
                     <a href={`/watch?v=${props.data.videoId}`}>
-                        <img src={ getImgFromThumbnail(props.data.thumbnails, 'medium')} className="object-fit h-full w-full" alt=""/>
+                        <img src={ getImgFromThumbnail(((props || {}).data || {}).thumbnails, 'medium')} className="object-fit h-full w-full" alt=""/>
                     </a>
                 )
                 }
@@ -32,7 +32,7 @@ export default (props) => {
                     <div className="h-8 w-1/12 mr-2 rounded-full">
                         {props.loading ?
                             (<Skeleton variant="circle" width={35} height={35}/>) :
-                            (<img src={getImgFromThumbnail(props.data.channelInfo.thumbnails, 'min')} className="object-fit rounded-full" alt=""/>)
+                            (<img src={getImgFromThumbnail(((props || {}).data || {}).thumbnails, 'min')} className="object-fit rounded-full" alt=""/>)
                         }
                     </div>
                     <div className="w-11/12 h-12">
@@ -42,7 +42,7 @@ export default (props) => {
                         }
                         {props.loading ?
                             (<Skeleton />) :
-                            (<div className="h-4 mt-1 font-light text-sm">{props.data.channelTitle}</div>)
+                            (<a href={`/search?query=channel:${props.data.channelTitle}`}><div className="h-4 mt-1 font-light text-sm">{props.data.channelTitle}</div></a>)
                         }
                         {props.loading ?
                             (<Skeleton />) :

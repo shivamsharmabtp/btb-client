@@ -29,7 +29,7 @@ export default (props) => {
     return (
         <>
         <Header query={queryParams.query} />
-        <div className="flex justify-center flex-col text-sm">
+        <div className="flex justify-evenly text-sm">
                     <InfiniteScroll
                             pageStart={0}
                             loadMore={loadMore}
@@ -41,7 +41,7 @@ export default (props) => {
                                 </div>
                             }
                         >
-                        <div className="flex flex-wrap md:justify-left justify-center w-12/12 overflow-hidden mt-8">
+                        <div className="flex flex-wrap md:justify-left justify-evenly w-12/12 overflow-hidden mt-8">
                             {videoData.map(video => 
                                 <VideoPreview key={video._id} data={video}/>
                             )}  

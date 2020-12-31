@@ -8,6 +8,7 @@ import Search from './Search';
 import Channel from './Channel';
 import Terms from './Terms';
 import Privacy from './Privacy';
+import About from './About'
 
 const App = () => (
   <Router>
@@ -17,6 +18,7 @@ const App = () => (
     <Channel path="/channels" />
     <Terms path="/terms" />
     <Privacy path="/privacy" />
+    <About path="/about" />
   </Router>
 );
 
