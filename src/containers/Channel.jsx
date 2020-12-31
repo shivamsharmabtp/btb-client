@@ -54,7 +54,8 @@ export default () => {
                         <img src={getImgFromThumbnail(channel.thumbnails, 'min')} className="object-fit rounded-full" alt=""/>
                     </div>
                     <div className="w-11/12 ">
-                        <a href={`https://www.youtube.com/channel/${channel.channelId}`}>
+                        <a href={`/search?query=channel:${channel.title}`}>
+                        {/* <a href={`https://www.youtube.com/channel/${channel.channelId}`}> */}
                             <div className="mt-1 text-sm">{channel.title}</div>
                         </a>
                         <div className="mt-1 font-light text-sm" dangerouslySetInnerHTML={{__html : linkify(channel.description)}}></div>

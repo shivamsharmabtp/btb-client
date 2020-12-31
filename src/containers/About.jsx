@@ -19,6 +19,22 @@ export default () => {
                 </div>
                 <div>
                     Hare Krishna.! Welcome to BhaktiTube. For the trancendental pleasure of Srila Prabhupada and his devotees. This project is created to bring all devotional videos under one umbrella. 
+                    As more and more devotional lectures are uploaded and viewed on youtube I felt there is dier need to create a platform for safe browsing on videos.
+                </div><br/>
+                <div>
+                    Tech Stack
+                    <ul className="ml-4" style={{'listStyleType': 'circle'}}>
+                        <li>NodeJS</li>
+                        <li>ReactJS</li>
+                        <li>MongoDB</li>
+                    </ul>
+                    If you want to contribute in this project contact me or raise a pull request on <a href="https://github.com/shivamsharmabtp/btb-client"><i>GitHub</i></a>
+                </div><br/>
+                <div>
+                    Contact : <br />
+                    ✉️ <i>shivamsharma.btp@gmail.com</i> <br/>
+                    📱 +91-9024519681 <br/>
+                    🌐 <a href="http://facebook.com/people/Shivam-Sharma/100004901058827">Facebook</a>
                 </div>
             </div>
         </>

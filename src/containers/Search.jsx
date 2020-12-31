@@ -29,7 +29,7 @@ export default (props) => {
     return (
         <>
         <Header query={queryParams.query} />
-        <div className="flex justify-evenly text-sm">
+        <div className="flex justify-evenly text-sm flex-col">
                     <InfiniteScroll
                             pageStart={0}
                             loadMore={loadMore}
