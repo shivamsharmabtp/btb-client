@@ -3,7 +3,6 @@ import * as queryString from 'query-string';
 import WatchPrimary from './../components/Video';
 import WatchSecondary from './../components/Recommended';
 import moment from 'moment';
-import { DiscussionEmbed } from 'disqus-react';
 
 import Header from './../components/Header';
 import constants, { getImgFromThumbnail, linkify } from '../constants';
@@ -12,17 +11,17 @@ export default (props) => {
     const queryParams = queryString.parse(props.location.search);
     const [details, setDetails] = useState('');
 
-
+    function loadDetails(){
+        fetch(`${constants.BASE_PATH}/video/details/${queryParams.v}`)
+                .then(response => response.json())
+                .then(data => {
+                    setDetails(data);
+                });
+    }
     useEffect(() => {
-        function loadDetails(){
-            fetch(`${constants.BASE_PATH}/video/details/${queryParams.v}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        setDetails(data);
-                    });
-        }
+        
         loadDetails()
-    },[]);
+    },[]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <>
@@ -47,16 +46,7 @@ export default (props) => {
                     <hr className="my-4"></hr>
                 </div>) : (<></>)}
                 <div>
-                <DiscussionEmbed
-                    shortname='BhaktiTube'
-                    config={
-                        {
-                            url: window.location,
-                            identifier: queryParams.v,
-                            title: details.title,
-                        }
-                    }
-                />
+                <div class="fb-comments" data-href={window.location.origin + '/watch?v=' + queryParams.v} data-width="100%" data-numposts="50" data-colorscheme="dark" data-lazy="true"></div>
                 </div>
             </div>
             <div className="md:w-1/4">

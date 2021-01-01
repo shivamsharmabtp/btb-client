@@ -36,6 +36,9 @@ export default () => {
                     📱 +91-9024519681 <br/>
                     🌐 <a href="http://facebook.com/people/Shivam-Sharma/100004901058827">Facebook</a>
                 </div>
+                <br/><br/>
+                For any Feedback, Queries or Bug Report please comment below. I would be more than happy to hear you.
+                <div class="fb-comments" data-href={window.location.href} data-width="100%" data-numposts="50" data-colorscheme="dark" data-lazy="true"></div>
             </div>
         </>
     )

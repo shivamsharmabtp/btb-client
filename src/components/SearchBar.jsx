@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import constants from '../constants';
 import Suggestions from './Suggestions';
-import {navigate} from '@reach/router';
 
 export default (props) => {
     const [query, setQuery] = useState(props.query);
