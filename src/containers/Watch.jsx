@@ -3,6 +3,7 @@ import * as queryString from 'query-string';
 import WatchPrimary from './../components/Video';
 import WatchSecondary from './../components/Recommended';
 import moment from 'moment';
+import { DiscussionEmbed } from 'disqus-react';
 
 import Header from './../components/Header';
 import constants, { getImgFromThumbnail, linkify } from '../constants';
@@ -21,7 +22,8 @@ export default (props) => {
                     });
         }
         loadDetails()
-    },[])
+    },[]);
+
     return (
         <>
         <Header />
@@ -33,15 +35,29 @@ export default (props) => {
                     <div className="text-lg	font-sans my-3">{details.title}</div>
                     <div className="h-4 mt-1 font-light text-sm mb-3">{moment(details.publishedAt).format("MMM Do YYYY")}</div>
                     <hr></hr>
-                    <div className="flex items-center my-3">
-                        <div className="h-12 w-12 mr-2 rounded-full">
-                            <img src={getImgFromThumbnail(details.channelInfo.thumbnails, 'min')} className="object-fit rounded-full" alt=""/>
+                    <a href={`/search?query=channel:${details.channelTitle}`}>
+                        <div className="flex items-center my-3">
+                            <div className="h-12 w-12 mr-2 rounded-full">
+                                <img src={getImgFromThumbnail(details.channelInfo.thumbnails, 'min')} className="object-fit rounded-full" alt=""/>
+                            </div>
+                            <div>{details.channelTitle}</div>
                         </div>
-                        <div>{details.channelTitle}</div>
-                    </div>
+                    </a>
                     <div className="font-light text-sm" dangerouslySetInnerHTML={{__html : linkify(details.description)}}></div>
                     <hr className="my-4"></hr>
                 </div>) : (<></>)}
+                <div>
+                <DiscussionEmbed
+                    shortname='BhaktiTube'
+                    config={
+                        {
+                            url: window.location,
+                            identifier: queryParams.v,
+                            title: details.title,
+                        }
+                    }
+                />
+                </div>
             </div>
             <div className="md:w-1/4">
                 <WatchSecondary videoId={queryParams.v} />
