@@ -47,6 +47,7 @@ export default () => {
                 )}
             </div>
         <h2 className="mb-8">All Channels</h2>
+        <div className="text-xs font-light mb-4"><i>Videos from these channels are fetched every 5 mins.</i></div>
         {channels.map(channel => {
             return (
                 <div className="flex mb-4 border-b pb-2">
