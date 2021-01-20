@@ -8,6 +8,7 @@ export default () => {
             <div className="mt-4 mb-4 p-4">
             <h2>Privacy Policy for BhaktiTube</h2>
 
+<p>Generated using Privacy Policy Generator</p>
 <p>At BhaktiTube, accessible from bhaktitube.in, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by BhaktiTube and how we use it.</p>
 
 <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>

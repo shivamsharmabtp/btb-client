@@ -8,6 +8,8 @@ export default () => {
             <div className="mt-4 mb-4 p-4">
             <h2><strong>Terms and Conditions</strong></h2>
 
+<i>Generated using Terms and Conditions Generator</i>
+
 <p>Welcome to BhaktiTube!</p>
 
 <p>These terms and conditions outline the rules and regulations for the use of BhaktiTube's Website, located at bhaktitube.in.</p>
