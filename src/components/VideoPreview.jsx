@@ -16,23 +16,21 @@ export default (props) => {
     return (
         <div className="h-64 w-3/12 mb-20 flex items-center flex-col md:videoPreviewBox w-full">
             {/* <div className="h-48" style={{width:'360px', minHeight:'200px'}}> */}
-            <div className="h-52 videoPreviewBoxMob md:videoPreviewBox w-full">
-                { props.loading ?
-                    (<Skeleton variant="rect" width={370} height={300} />) :
-                (
-                    <a href={`/watch?v=${props.data.videoId}`}>
-                        <img src={ getImgFromThumbnail(((props || {}).data || {}).thumbnails, 'high')} className="object-fit h-full w-full" alt=""/>
-                    </a>
-                )
-                }
+            <a href={`/watch?v=${props.data.videoId}`} className="w-full">
+
+            <div className="h-52 videoPreviewBoxMob md:videoPreviewBox w-full thumb" style={{
+                backgroundImage: `url(${getImgFromThumbnail(((props || {}).data || {}).thumbnails, 'high')})`
+            }}>
             </div>
+            </a>
+
             {/* <div className="h-16 mt-2" style={{width:'360px', minHeight:'100px'}}> */}
             <div className="h-16 mt-2 w-full md:videoPreviewBox">
                 <div className="h-12 flex">
                     <div className="h-8 w-1/12 mr-2 rounded-full">
                         {props.loading ?
                             (<Skeleton variant="circle" width={35} height={35}/>) :
-                            (<img src={getImgFromThumbnail(((props || {}).data || {}).thumbnails, 'min')} className="object-fit rounded-full" alt=""/>)
+                            (<img src={getImgFromThumbnail(((props || {}).data || {}).thumbnails, 'min')} className="object-fit rounded-full " alt=""/>)
                         }
                     </div>
                     <div className="w-11/12 h-12">

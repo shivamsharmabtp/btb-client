@@ -29,4 +29,8 @@
 input::-webkit-calendar-picker-indicator {
     display: none;
 }
-  
+
+.thumb {
+    background-size: 100% 135%;
+    background-position-y: 50%;
+}
