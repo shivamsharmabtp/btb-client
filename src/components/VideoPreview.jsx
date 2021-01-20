@@ -16,7 +16,7 @@ export default (props) => {
     return (
         <div className="h-64 w-3/12 mb-20 flex items-center flex-col md:videoPreviewBox w-full">
             {/* <div className="h-48" style={{width:'360px', minHeight:'200px'}}> */}
-            <div className="h-52 md:videoPreviewBox w-full">
+            <div className="h-52 videoPreviewBoxMob md:videoPreviewBox w-full">
                 { props.loading ?
                     (<Skeleton variant="rect" width={370} height={300} />) :
                 (

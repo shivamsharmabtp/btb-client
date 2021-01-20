@@ -12,6 +12,10 @@
         width: 360px;
         min-height : 200px;
     }
+    .videoPreviewBoxMob{
+        min-height : 200px;
+        background: #ccc;
+    }
 }
 
 .searchBtn{
