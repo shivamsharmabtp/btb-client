@@ -19,10 +19,6 @@ module.exports = {
                 else if(pics.standard){
                     url = pics.standard.url;
                 }
-            }
-
-            if(size === 'high' && pics.default){
-                url = pics.default.url
             }else if(size === 'high'){
                 if(pics.high)
                     url = pics.high.url;
