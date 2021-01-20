@@ -21,7 +21,7 @@ export default (props) => {
                     (<Skeleton variant="rect" width={370} height={300} />) :
                 (
                     <a href={`/watch?v=${props.data.videoId}`}>
-                        <img src={ getImgFromThumbnail(((props || {}).data || {}).thumbnails, 'medium')} className="object-fit h-full w-full" alt=""/>
+                        <img src={ getImgFromThumbnail(((props || {}).data || {}).thumbnails, 'high')} className="object-fit h-full w-full" alt=""/>
                     </a>
                 )
                 }
