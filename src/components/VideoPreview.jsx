@@ -30,7 +30,7 @@ export default (props) => {
                     <div className="h-8 w-1/12 mr-2 rounded-full">
                         {props.loading ?
                             (<Skeleton variant="circle" width={35} height={35}/>) :
-                            (<img src={getImgFromThumbnail(((props || {}).data || {}).thumbnails, 'min')} className="object-fit rounded-full " alt=""/>)
+                            (<img src={getImgFromThumbnail((((props || {}).data || {}).channelInfo || {}).thumbnails, 'min')} className="object-fit rounded-full " alt=""/>)
                         }
                     </div>
                     <div className="w-11/12 h-12">
