@@ -9,6 +9,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import profilePic from './../containers/Images/sp3.webp'
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 import RadioIcon from '@material-ui/icons/Radio';
+import WbIncandescentIcon from '@material-ui/icons/WbIncandescent';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,6 +58,22 @@ export default function SimpleList() {
           </ListItemIcon>
           <a href="https://prabhupadaradio.com/">
             <ListItemText primary="Prabhupada Radio" />
+          </a>
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <WbIncandescentIcon />
+          </ListItemIcon>
+          <a href="https://prabhupadavani.org/">
+            <ListItemText primary="Prabhupada Vani" />
+          </a>
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <MenuBookIcon />
+          </ListItemIcon>
+          <a href="https://vedabase.io/en/">
+            <ListItemText primary="Vedabase" />
           </a>
         </ListItem>
       </List>
