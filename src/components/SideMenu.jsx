@@ -8,6 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import HomeIcon from '@material-ui/icons/Home';
 import profilePic from './../containers/Images/sp3.webp'
 import LiveTvIcon from '@material-ui/icons/LiveTv';
+import RadioIcon from '@material-ui/icons/Radio';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,6 +48,14 @@ export default function SimpleList() {
           </ListItemIcon>
           <a href="/channels">
             <ListItemText primary="Channels" />
+          </a>
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <RadioIcon />
+          </ListItemIcon>
+          <a href="https://prabhupadaradio.com/">
+            <ListItemText primary="Prabhupada Radio" />
           </a>
         </ListItem>
       </List>
