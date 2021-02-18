@@ -19,7 +19,7 @@ export default (props) => {
         setState({ ...state, left: open });
     };
     return (
-        <div className="w-full shadow flex content-center justify-center fixed top-0 bg-white">
+        <div className="w-full shadow flex content-center justify-center fixed top-0 bg-white z-10">
             <Drawer anchor={'left'} open={state['left']} onClose={toggleDrawer(false)}>
                 <SideMenu />
             </Drawer>

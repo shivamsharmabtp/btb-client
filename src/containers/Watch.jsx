@@ -9,7 +9,7 @@ import constants, { getImgFromThumbnail, linkify } from '../constants';
 
 export default (props) => {
     const queryParams = queryString.parse(props.location.search);
-    const [details, setDetails] = useState('');
+    const [details, setDetails] = useState();
 
     function loadDetails(){
         fetch(`${constants.BASE_PATH}/video/details/${queryParams.v}`)
@@ -28,8 +28,8 @@ export default (props) => {
         <Header />
         <div className="w-full md:h-8"></div>
         <div className="md:flex justify-around">
-            <div className="md:w-4/6 h-auto">
-                <WatchPrimary videoId={queryParams.v} />
+            <div className="md:w-4/6 h-auto mt-4">
+                {details ? <WatchPrimary videoUrl={details.videoUrl} />  : (<></>)}
                 {details ? (<div className="mx-3 md:mx-0">
                     <div className="text-lg	font-sans my-3">{details.title}</div>
                     <div className="h-4 mt-1 font-light text-sm mb-3">{moment(details.publishedAt).format("MMM Do YYYY")}</div>

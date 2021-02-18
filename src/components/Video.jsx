@@ -5,7 +5,7 @@ import ContainerDimensions from 'react-container-dimensions';
 export default (props) => {
     return (
         <ContainerDimensions>
-            {({width}) => <iframe 
+            {/* {({width}) => <iframe 
             title="YoutubePlayer"
             width={width} 
             height={width*9/16} 
@@ -19,7 +19,14 @@ export default (props) => {
             picture-in-picture;
             fullscreen;
             " 
-            allowfullscreen></iframe>}
+            allowfullscreen></iframe>} */}
+            {({width}) => <video 
+                src={props.videoUrl}
+                autoPlay="true"
+                controls="true"
+                width={width} 
+                height={width*9/16} 
+            ></video>}
         </ContainerDimensions>
     )
 }
