@@ -3,7 +3,7 @@ import * as queryString from 'query-string';
 import WatchPrimary from './../components/Video';
 import WatchSecondary from './../components/Recommended';
 import moment from 'moment';
-import Skeleton from '@material-ui/lab/Skeleton';
+// import Skeleton from '@material-ui/lab/Skeleton';
 
 import Header from './../components/Header';
 import constants, { getImgFromThumbnail, linkify } from '../constants';

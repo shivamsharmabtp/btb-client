@@ -12,6 +12,7 @@ const htmlPlayer = (width, videoUrl) => {
             controls="true"
             width={width} 
             height={width*9/16} 
+            playsInline
         ></video>
     )
 }
@@ -40,7 +41,11 @@ const ytPlayer = (width, videoId) => {
 const blankPlayer = (width) => {
     return (
         <>
-            <Skeleton variant="rect" width={width} height={width*9/16} />
+            <Skeleton variant="rect" width={width} height={width*9/16} animation="wave"/>
+            <div className="flex justify-left align-center mt-4 mb-4 ml-2">
+                <Skeleton variant="circle" width={40} height={40} animation="wave" />
+                <Skeleton variant="rect" width={300} height={30} animation="wave" className="ml-4"/>
+            </div>
         </>
     )
 }
