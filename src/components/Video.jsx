@@ -62,7 +62,7 @@ const blankPlayer = (width) => {
 export default (props) => {
     const media = useCallbackRef(null, node => {
         console.log(node)
-        if (node !== null) {
+        if (node !== null && window.localStorage) {
             let historyVideos = window.localStorage.getItem('history1');
             if(historyVideos)
                 historyVideos = JSON.parse(historyVideos);
@@ -74,7 +74,7 @@ export default (props) => {
     });
     window.setInterval(() => {
         // console.log(media)
-        if(media.current && props.videoId){
+        if(media.current && props.videoId && window.localStorage){
             let historyVideos = window.localStorage.getItem('history1');
             if(historyVideos){
                 historyVideos = JSON.parse(historyVideos);
