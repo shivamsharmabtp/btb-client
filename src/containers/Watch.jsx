@@ -3,6 +3,7 @@ import * as queryString from 'query-string';
 import WatchPrimary from './../components/Video';
 import WatchSecondary from './../components/Recommended';
 import moment from 'moment';
+// import CommentGrid from './../components/CommentGrid';
 // import Skeleton from '@material-ui/lab/Skeleton';
 
 import Header from './../components/Header';
@@ -46,7 +47,8 @@ export default (props) => {
                     <div className="font-light text-sm" dangerouslySetInnerHTML={{__html : linkify(details.description)}}></div>
                     <hr className="my-4"></hr>
                 </div>) : (<></>)}
-                <div>
+                <div className="ml-2">
+                    {/* <CommentGrid videoId={queryParams.v}></CommentGrid> */}
                 </div>
             </div>
             <div className="md:w-1/4">

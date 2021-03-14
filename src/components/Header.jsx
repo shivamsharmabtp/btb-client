@@ -28,10 +28,10 @@ export default (props) => {
                     <IconButton onClick={toggleDrawer(true)} style={{outline:'none'}}>
                         <MenuIcon />
                     </IconButton>
-                    <Link to={'/'}>
+                    <a href="/">
                         <div className="font-bold text-2xl md:hidden"><span className="text-blue-700">B</span>T</div>
                         <div className="font-bold text-2xl hidden md:block"><span className="text-blue-700">Bhakti</span>Tube</div>
-                    </Link>
+                    </a>
                 </div>
                 <SearchBar query={query} />
                 <div className="h-10 w-10 cursor-pointer hidden md:block">

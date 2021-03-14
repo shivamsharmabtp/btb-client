@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 // import Youtube from 'react-youtube';
 import ContainerDimensions from 'react-container-dimensions';
 // import ReactPlayer from 'react-player'
 import Skeleton from '@material-ui/lab/Skeleton';
+import {useCallbackRef} from 'use-callback-ref';
 
-const htmlPlayer = (width, videoUrl) => {
+const htmlPlayer = (width, videoUrl, ref) => {
     return (
         <video 
             src={videoUrl}
-            autoPlay="true"
-            controls="true"
+            autoPlay={true}
+            controls={true}
             width={width} 
             height={width*9/16} 
             playsInline
+            ref={ref}
         ></video>
     )
 }
@@ -41,22 +43,72 @@ const ytPlayer = (width, videoId) => {
 const blankPlayer = (width) => {
     return (
         <>
-            <Skeleton variant="rect" width={width} height={width*9/16} animation="wave"/>
-            <div className="flex justify-left align-center mt-4 mb-4 ml-2">
-                <Skeleton variant="circle" width={40} height={40} animation="wave" />
-                <Skeleton variant="rect" width={300} height={30} animation="wave" className="ml-4"/>
+            <div className="mb-4">
+                <Skeleton variant="rect" width={width} height={width*9/16} animation="wave"/>
+                <Skeleton variant="rect" width={300} height={30} animation="wave" className="mt-2 ml-2 rounded-md"/>
+                <div className="flex justify-left items-center mt-4 mb-4 ml-2 ">
+                    <Skeleton variant="circle" width={40} height={40} animation="wave " />
+                    <Skeleton variant="rect" width={300} height={30} animation="wave" className="ml-4 rounded-md"/>
+                </div>
+                <Skeleton variant="rect" width={300} height={10} animation="wave" className="mt-2 ml-2 rounded-md"/>
+                <Skeleton variant="rect" width={200} height={10} animation="wave" className="mt-2 ml-2 rounded-md"/>
+                <Skeleton variant="rect" width={100} height={10} animation="wave" className="mt-2 ml-2 rounded-md"/>
             </div>
+            <hr className="mb-4"/>
         </>
     )
 }
 
 export default (props) => {
-    return (
-        <ContainerDimensions>
-            {props.loaded ? props.videoUrlFetched ? ({width}) => htmlPlayer(width, props.videoUrl) : 
-                ({width}) => ytPlayer(width, props.videoId) : ({width}) => blankPlayer(width)
+    const media = useCallbackRef(null, node => {
+        console.log(node)
+        if (node !== null) {
+            let historyVideos = window.localStorage.getItem('history1');
+            if(historyVideos)
+                historyVideos = JSON.parse(historyVideos);
+            if(historyVideos && historyVideos[props.videoId]){
+                node.currentTime = historyVideos[props.videoId].playedTill;
             }
-        </ContainerDimensions>
+        }
+
+    });
+    window.setInterval(() => {
+        // console.log(media)
+        if(media.current && props.videoId){
+            let historyVideos = window.localStorage.getItem('history1');
+            if(historyVideos){
+                historyVideos = JSON.parse(historyVideos);
+                delete(historyVideos[props.videoId])
+                if(Object.keys(historyVideos).length > 100){
+                    const removeKey = Object.keys(historyVideos).shift();
+                    delete(historyVideos[removeKey]);
+                }      
+            }else{
+                historyVideos = {};
+            }
+            historyVideos[props.videoId] = {
+                playedTill : media.current.currentTime,
+                totalDuration : media.current.duration
+            };
+
+            window.localStorage.setItem('history1', JSON.stringify(historyVideos));
+        }
+    }, 1000);
+
+
+    useEffect(() => {
+
+    }, [media]);
+
+    return (
+        <>
+            <ContainerDimensions>
+                {props.loaded ? props.videoUrlFetched ? ({width}) => htmlPlayer(width, props.videoUrl, media, props.videoId) : 
+                    ({width}) => ytPlayer(width, props.videoId) : ({width}) => blankPlayer(width)
+                }
+            </ContainerDimensions>
+        </>
+
     )
 }
 
