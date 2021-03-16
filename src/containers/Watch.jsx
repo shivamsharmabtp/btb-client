@@ -18,6 +18,7 @@ export default (props) => {
                 .then(response => response.json())
                 .then(data => {
                     setDetails({...data, loaded : true});
+                    if(data.title) document.title = data.title + ' - BhaktiTube';
                 });
     }
     useEffect(() => {
