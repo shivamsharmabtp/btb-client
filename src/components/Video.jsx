@@ -19,13 +19,13 @@ const htmlPlayer = (width, videoUrl, ref) => {
     )
 }
 
-const ytPlayer = (width, videoId) => {
+const ytPlayer = (width, videoId, controls) => {
     return (
         <iframe 
             title="YoutubePlayer"
             width={width} 
             height={width*9/16} 
-            src={`https://www.youtube.com/embed/${videoId}`} 
+            src={`https://www.youtube.com/embed/${videoId}?controls=${controls}&autoplay=1`} 
             frameborder="0" 
             allow="accelerometer; 
             autoplay; 
@@ -104,7 +104,7 @@ export default (props) => {
         <>
             <ContainerDimensions>
                 {props.loaded ? props.videoUrlFetched ? ({width}) => htmlPlayer(width, props.videoUrl, media, props.videoId) : 
-                    ({width}) => ytPlayer(width, props.videoId) : ({width}) => blankPlayer(width)
+                    ({width}) => ytPlayer(width, props.videoId, props.controls) : ({width}) => blankPlayer(width)
                 }
             </ContainerDimensions>
         </>

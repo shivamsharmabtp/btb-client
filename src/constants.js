@@ -42,5 +42,8 @@ module.exports = {
                 shortUrl = url.substring(0, 35) + '...';
             return '<a style="color:##1a0dab" href="' + url + '">' + shortUrl + '</a>';
         });
+    },
+    unlinkify : (text) => {
+        return text.split('<a').join('<span').split('/a>').join('/span>')
     }
 }

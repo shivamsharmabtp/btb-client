@@ -8,7 +8,9 @@ import Search from './Search';
 import Channel from './Channel';
 import Terms from './Terms';
 import Privacy from './Privacy';
-import About from './About'
+import About from './About';
+import Tv from './Tv';
+import SpRadio from './SpRadio';
 
 const App = () => (
   <Router>
@@ -19,6 +21,8 @@ const App = () => (
     <Terms path="/terms" />
     <Privacy path="/privacy" />
     <About path="/about" />
+    <Tv path="/tv" />
+    <SpRadio path="/srila-prabhupada-radio" />
   </Router>
 );
 

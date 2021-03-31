@@ -56,7 +56,7 @@ export default function SimpleList() {
           <ListItemIcon>
             <RadioIcon />
           </ListItemIcon>
-          <a href="https://prabhupadaradio.com/">
+          <a href="/srila-prabhupada-radio">
             <ListItemText primary="Prabhupada Radio" />
           </a>
         </ListItem>
