@@ -43,7 +43,9 @@ export default (props) => {
         )
     }
     const displayBlank = () => {
-        return (<></>)
+        return (<>
+            <div className="m-8">Loading...</div>
+        </>)
     }
 
     const media = useCallbackRef(null, node => {
