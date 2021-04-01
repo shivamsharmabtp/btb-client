@@ -4,7 +4,6 @@ import profilePic from './../containers/Images/sp3.webp';
 import SideMenu from './SideMenu';
 import SearchBar from './SearchBar';
 import MenuIcon from '@material-ui/icons/Menu';
-import { Link } from "@reach/router";
 
 export default (props) => {
     const {query} = props;

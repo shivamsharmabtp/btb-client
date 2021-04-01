@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 // import Youtube from 'react-youtube';
 import ContainerDimensions from 'react-container-dimensions';
 // import ReactPlayer from 'react-player'

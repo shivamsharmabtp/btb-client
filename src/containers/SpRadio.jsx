@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import {useCallbackRef} from 'use-callback-ref';
-import Cookies from 'universal-cookie';
+import * as queryString from 'query-string';
+
+// import Cookies from 'universal-cookie';
 
 import Header from './../components/Header';
 import constants, { unlinkify } from '../constants';
 
-const cookies = new Cookies();
+// const cookies = new Cookies();
 
 export default (props) => {
+    const queryParams = queryString.parse(props.location.search);
     const [details, setDetails] = useState({});
 
-    const loadDetails = () => {
-        fetch(`${constants.BASE_PATH}/spRadio/getRandomUrlInfo`)
-                .then(response => response.json())
-                .then(data => {
-                    setDetails({...data, loaded : true});
-                    if(data.title) document.title = data.title + ' - BhaktiTube';
-                    console.log(details);
-                    cookies.set('radioHistoryLink', data.link, { path: '/' })
-                });
-                
+    const loadDetails = async () => {
+        let url = `${constants.BASE_PATH}/spRadio/getRandomUrlInfo`
+        if(queryParams.reset) url += '?reset=true'
+        let response = await fetch(url);
+        let data = await response.json();
+        setDetails({...data, loaded : true});
+        if(data.title) document.title = data.title + ' - BhaktiTube';                
     }
 
     useEffect(() => {
@@ -48,21 +48,43 @@ export default (props) => {
 
     const media = useCallbackRef(null, node => {
         if(details.playedTill){
-            node.currentTime = details.playedTill
+            node.currentTime = details.playedTill;
+            node.play();
+            node.onended = (event) => {
+                if(window.location.href.includes('reset'))
+                    window.location.href = window.location.href;
+                else
+                window.location.href = window.location.href + '?reset=true'
+            };
         }
     });
 
-    window.setInterval(() => {
-        // console.log(media)
-        if(media.current){
-            let radioHistory = {
-                playedTill : media.current.currentTime,
-                totalDuration : media.current.duration
-            };
+    // const playMedia = () => {
+    //     if(media && media.current && media.play){
+    //         console.log(media);
+    //         media.play()
+    //     }else{
+    //         console.log(media);
+    //     }
+    // }
+    // useEffect(() => {
+    //     (() => playMedia())();
+    // }, [details.mp3Link]);
 
-            cookies.set('radioHistory', JSON.stringify(radioHistory), { path: '/' });
-        }
-    }, 1000);
+    // window.setInterval(async () => {
+    //     // console.log(media)
+    //     if(media.current){
+    //         if(media.current.currentTime + 2 > media.current.duration){
+    //             await loadDetails(true);
+    //             await sleep(10);
+    //         }
+    //         // let radioHistory = {
+    //         //     playedTill : media.current.currentTime,
+    //         //     totalDuration : media.current.duration
+    //         // };
+    //         // cookies.set('radioHistory', JSON.stringify(radioHistory), { path: '/' });
+    //     }
+    // }, 1000);
 
     return (
         <>

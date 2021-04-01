@@ -45,5 +45,10 @@ module.exports = {
     },
     unlinkify : (text) => {
         return text.split('<a').join('<span').split('/a>').join('/span>')
+    },
+    sleep : (seconds) => {
+        let ms = parseInt(seconds*1000);
+        console.log('Sleeping for ' + ms + 'ms');
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 }
