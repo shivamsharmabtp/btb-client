@@ -15,7 +15,7 @@ export default (props) => {
 
     const loadDetails = async () => {
         let url = `${constants.BASE_PATH}/spRadio/getRandomUrlInfo`
-        if(queryParams.reset) url += '?reset=true'
+        if(queryParams.reset) url += '?reset=true&prevTitle=' + queryParams.prevTitle
         let response = await fetch(url);
         let data = await response.json();
         setDetails({...data, loaded : true});
@@ -53,10 +53,7 @@ export default (props) => {
             node.currentTime = details.playedTill;
             node.play();
             node.onended = (event) => {
-                if(window.location.href.includes('reset'))
-                    window.location.href = window.location.href;
-                else
-                window.location.href = window.location.href + '?reset=true'
+                window.location.href = window.location.origin + window.location.pathname + '?reset=true&prevTitle=' + details.title
             };
         }
     });
