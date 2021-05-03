@@ -18,7 +18,8 @@ export default (props) => {
 
     const loadDetails = async () => {
         let url = `${constants.BASE_PATH}/spRadio/getRandomUrlInfo`
-        if(queryParams.reset) url += '?reset=true&prevTitle=' + queryParams.prevTitle
+        if(queryParams.refresh) url += '?refresh=' + queryParams.refresh;
+        else if(queryParams.reset) url += '?reset=true&prevTitle=' + queryParams.prevTitle;
         let response = await fetch(url);
         let data = await response.json();
         setDetails({...data, loaded : true});
@@ -35,6 +36,11 @@ export default (props) => {
         window.location.search = searchParams.toString()
     }
     const getScrollLock = () => scrollLock;
+    const refreshAudio = (type) => {
+        var searchParams = new URLSearchParams(window.location.search)
+        searchParams.set('refresh', type)
+        window.location.search = searchParams.toString()
+    }
 
     const displayData = (details, media) => {
         return (
@@ -43,7 +49,11 @@ export default (props) => {
                     <audio  controls className="w-full" ref={media}>
                         <source src={details.mp3Link} />
                     </audio>
-                    <button className="mt-2" onClick={() => lockScroll()}>Lock Scroll</button>
+                    <div className="">
+                        <button className="mt-2" onClick={() => lockScroll()}>Lock Scroll</button>
+                        <button className="mt-2 ml-2" onClick={() => refreshAudio('transcript')}>Refresh Transcript</button>
+                        <button className="mt-2 ml-2" onClick={() => refreshAudio('kirtan')}>Refresh Kirtan</button>
+                    </div>
                 </div>
                 <div className>
                     <a href={details.link} >Source</a>
