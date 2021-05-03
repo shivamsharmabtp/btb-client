@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import {useCallbackRef} from 'use-callback-ref';
 import * as queryString from 'query-string';
-
-// import Cookies from 'universal-cookie';
-
+import Scroll from 'react-scroll';
 import Header from './../components/Header';
 import constants, { unlinkify } from '../constants';
+
+const scroll = Scroll.animateScroll;
+
+// import Cookies from 'universal-cookie';
 
 // const cookies = new Cookies();
 
 export default (props) => {
+    let wakeLock, scrollLock;
     const queryParams = queryString.parse(props.location.search);
     const [details, setDetails] = useState({});
 
@@ -19,26 +22,37 @@ export default (props) => {
         let response = await fetch(url);
         let data = await response.json();
         setDetails({...data, loaded : true});
-        if(data.title) document.title = data.title + ' - BhaktiTube';                
+        if(data.title) document.title = data.title + ' - BhaktiTube';             
     }
 
     useEffect(() => {
         loadDetails();
     }, [])
 
+    const lockScroll = () => {
+        var searchParams = new URLSearchParams(window.location.search)
+        searchParams.set('scrollLock', true)
+        window.location.search = searchParams.toString()
+    }
+    const getScrollLock = () => scrollLock;
+
     const displayData = (details, media) => {
         return (
             <>
-                <a href={details.link} >Source</a>
-                <audio  controls className="mt-4 w-full" ref={media}>
-                    <source src={details.mp3Link} />
-                </audio>
-                <div className="mt-4 ">{details.title}</div>
-                <h3 className="mt-8">Record Info</h3>
-                <div className="mt-4" dangerouslySetInnerHTML={{__html : unlinkify(details.recordInfo)}}></div>
-                <h3 className="mt-8">Transcript</h3>
-                <div className="mt-4" dangerouslySetInnerHTML={{__html : unlinkify(details.transcript)}}></div>
-
+                <div className="fixed w-full bg-gray-400 bottom-0 p-2">
+                    <audio  controls className="w-full" ref={media}>
+                        <source src={details.mp3Link} />
+                    </audio>
+                    <button className="mt-2" onClick={() => lockScroll()}>Lock Scroll</button>
+                </div>
+                <div className>
+                    <a href={details.link} >Source</a>
+                    <div className="mt-8 ">{details.title}</div>
+                    <h3 className="mt-8">Record Info</h3>
+                    <div className="mt-4" dangerouslySetInnerHTML={{__html : unlinkify(details.recordInfo)}}></div>
+                    <h3 className="mt-8">Transcript</h3>
+                    <div className="mt-4" dangerouslySetInnerHTML={{__html : unlinkify(details.transcript)}}></div>
+                </div>
             </>
         )
     }
@@ -70,20 +84,37 @@ export default (props) => {
     //     (() => playMedia())();
     // }, [details.mp3Link]);
 
-    // window.setInterval(async () => {
-    //     // console.log(media)
-    //     if(media.current){
-    //         if(media.current.currentTime + 2 > media.current.duration){
-    //             await loadDetails(true);
-    //             await sleep(10);
-    //         }
-    //         // let radioHistory = {
-    //         //     playedTill : media.current.currentTime,
-    //         //     totalDuration : media.current.duration
-    //         // };
-    //         // cookies.set('radioHistory', JSON.stringify(radioHistory), { path: '/' });
-    //     }
-    // }, 1000);
+    let interval;
+    const intervalFunc = async () => {
+        if(media.current){
+            // console.log({
+            //     currentTime : media.current.currentTime,
+            //     duration : media.current.duration
+            // });
+            if(!wakeLock){
+                try {
+                    await navigator.wakeLock.request('screen');
+                    console.log('Wake Lock is active!');
+                    wakeLock=true
+                  } catch (err) {
+                    // The Wake Lock request has failed - usually system related, such as battery.
+                    console.log(`${err.name}, ${err.message}`);
+                  }   
+            }
+
+            if(!queryParams.scrollLock){
+                scroll.scrollTo(document.querySelector('body').offsetHeight*(media.current.currentTime/media.current.duration) - 100);
+            }
+        }
+        clearInterval(interval);
+        interval = window.setInterval(async () => {
+                intervalFunc();
+        }, 1000);
+    }
+
+    interval = window.setInterval(async () => {
+            intervalFunc();
+    }, 1000);
 
     return (
         <>
