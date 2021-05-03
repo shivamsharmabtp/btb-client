@@ -103,7 +103,7 @@ export default (props) => {
             }
 
             if(!queryParams.scrollLock){
-                scroll.scrollTo(document.querySelector('body').offsetHeight*(media.current.currentTime/media.current.duration) - 100);
+                scroll.scrollTo(document.querySelector('body').offsetHeight*(media.current.currentTime/media.current.duration) - 150);
             }
         }
         clearInterval(interval);
