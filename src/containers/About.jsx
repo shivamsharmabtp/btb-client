@@ -33,7 +33,7 @@ export default () => {
                 <div>
                     Contact : <br />
                     ✉️ <i>shivamsharma.btp@gmail.com</i> <br/>
-                    📱 +91-9024519681 <br/>
+                    
                     🌐 <a href="http://facebook.com/people/Shivam-Sharma/100004901058827">Facebook</a>
                 </div>
                 <br/><br/>
