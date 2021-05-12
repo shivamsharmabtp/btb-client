@@ -59,6 +59,12 @@ const blankPlayer = (width) => {
     )
 }
 
+const notAvailablePlayer = (width) => {
+    return (
+        <div style={{height:width*9/16 , width}} className="p-4">Video not available.</div>
+    )
+}
+
 export default (props) => {
     const media = useCallbackRef(null, node => {
         console.log(node)
@@ -103,8 +109,14 @@ export default (props) => {
     return (
         <>
             <ContainerDimensions>
-                {props.loaded ? props.videoUrlFetched ? ({width}) => htmlPlayer(width, props.videoUrl, media, props.videoId) : 
-                    ({width}) => ytPlayer(width, props.videoId, props.controls) : ({width}) => blankPlayer(width)
+                {
+                    props.loaded ? 
+                        props.videoUrlFetched ? 
+                                props.details.inDb ?
+                                ({width}) => htmlPlayer(width, props.videoUrl, media, props.videoId) :
+                            ({width}) => notAvailablePlayer(width) : 
+                        ({width}) => ytPlayer(width, props.videoId, props.controls) :
+                    ({width}) => blankPlayer(width)
                 }
             </ContainerDimensions>
         </>

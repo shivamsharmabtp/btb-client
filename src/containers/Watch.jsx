@@ -32,7 +32,7 @@ export default (props) => {
         <div className="w-full md:h-8"></div>
         <div className="md:flex justify-around">
             <div className="md:w-4/6 h-auto mt-4">
-                <WatchPrimary videoUrl={details.videoUrl} controls={1} videoUrlFetched={details.videoUrlFetched} videoId={queryParams.v} loaded={details.loaded} />
+                <WatchPrimary videoUrl={details.videoUrl} controls={1} videoUrlFetched={details.videoUrlFetched} videoId={queryParams.v} loaded={details.loaded} details={details} />
                 {details.loaded && details.title ? (<div className="mx-3 md:mx-0">
                     <div className="text-lg	font-sans my-3">{details.title}</div>
                     <div className="h-4 mt-1 font-light text-sm mb-3">{moment(details.publishedAt).format("MMM Do YYYY")}</div>
