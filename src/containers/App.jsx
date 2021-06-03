@@ -11,6 +11,7 @@ import Privacy from './Privacy';
 import About from './About';
 import Tv from './Tv';
 import SpRadio from './SpRadio';
+import Test from './Test'
 
 const App = () => (
   <Router>
@@ -23,6 +24,7 @@ const App = () => (
     <About path="/about" />
     <Tv path="/tv" />
     <SpRadio path="/srila-prabhupada-radio" />
+    <Test path="/test" />
   </Router>
 );
 
