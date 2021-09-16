@@ -6,7 +6,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import HomeIcon from '@material-ui/icons/Home';
-import profilePic from './../containers/Images/sp3.webp'
+import profilePic from './../containers/Images/userAvatar.png'
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 import RadioIcon from '@material-ui/icons/Radio';
 import WbIncandescentIcon from '@material-ui/icons/WbIncandescent';
@@ -30,7 +30,7 @@ export default function SimpleList() {
         <img src={profilePic} className="object-fit h-10 w-10 rounded-full" alt=""/>
         <div className="flex flex-col ml-4">
           <span className="text-xs">Welcome To</span>
-          <span><b><span className="text-blue-700">Bhakti</span>Tube</b></span>
+          <span><b><span className="text-red-600">Reaction</span>Tube</b></span>
         </div>
 
       </div>
@@ -52,30 +52,6 @@ export default function SimpleList() {
             <ListItemText primary="Channels" />
           </a>
         </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <RadioIcon />
-          </ListItemIcon>
-          <a href="/srila-prabhupada-radio">
-            <ListItemText primary="Prabhupada Radio" />
-          </a>
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <WbIncandescentIcon />
-          </ListItemIcon>
-          <a href="https://prabhupadavani.org/">
-            <ListItemText primary="Prabhupada Vani" />
-          </a>
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <MenuBookIcon />
-          </ListItemIcon>
-          <a href="https://vedabase.io/en/">
-            <ListItemText primary="Vedabase" />
-          </a>
-        </ListItem>
       </List>
       <Divider />
       <List component="nav" aria-label="secondary mailbox folders">
@@ -85,7 +61,7 @@ export default function SimpleList() {
             <a href="/terms" className="text-xs font-light">Terms • </a>
             <a href="/privacy" className="text-xs font-light">Privacy</a>
           </div>
-          <span className="ml-4 font-light text-sm ml-4 mt-2">© BhaktiTube 2020</span>
+          <span className="ml-4 font-light text-sm ml-4 mt-2">© ReactionTube 2020</span>
         </div>
       </List>
     </div>

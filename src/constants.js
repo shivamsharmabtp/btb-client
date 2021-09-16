@@ -1,5 +1,5 @@
 module.exports = {
-    BASE_PATH : '/btb/api',
+    BASE_PATH : 'http://localhost:5151/btb/api',
     getImgFromThumbnail : (thumbnails, size) => {
         let pics, url = 'https://i.ytimg.com/vi/mHO3Bspyxqo/mqdefault.jpg';
         if(thumbnails && thumbnails.length){

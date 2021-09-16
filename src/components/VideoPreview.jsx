@@ -14,7 +14,7 @@ export default (props) => {
     }
 
     return (
-        <div className="h-64 w-3/12 mb-20 flex items-center flex-col md:videoPreviewBox w-full">
+        <div className="h-64 w-1/5 mb-20 flex items-center flex-col md:videoPreviewBox w-full">
             {/* <div className="h-48" style={{width:'360px', minHeight:'200px'}}> */}
             <a href={`/watch?v=${props.data.videoId}`} className="w-full">
 

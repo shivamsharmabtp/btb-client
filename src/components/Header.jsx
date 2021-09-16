@@ -1,6 +1,6 @@
 import { IconButton, Drawer } from '@material-ui/core';
 import React from 'react';
-import profilePic from './../containers/Images/sp3.webp';
+import profilePic from './../containers/Images/userAvatar.png';
 import SideMenu from './SideMenu';
 import SearchBar from './SearchBar';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -28,8 +28,8 @@ export default (props) => {
                         <MenuIcon />
                     </IconButton>
                     <a href="/">
-                        <div className="font-bold text-2xl md:hidden"><span className="text-blue-700">B</span>T</div>
-                        <div className="font-bold text-2xl hidden md:block"><span className="text-blue-700">Bhakti</span>Tube</div>
+                        <div className="font-bold text-2xl md:hidden"><span className="text-red-600">R</span>T</div>
+                        <div className="font-bold text-2xl hidden md:block"><span className="text-red-600">Reaction</span>Tube</div>
                     </a>
                 </div>
                 <SearchBar query={query} />

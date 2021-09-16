@@ -23,7 +23,7 @@ export default (props) => {
         let response = await fetch(url);
         let data = await response.json();
         setDetails({...data, loaded : true});
-        if(data.title) document.title = data.title + ' - BhaktiTube';             
+        if(data.title) document.title = data.title + ' - ReactionTube';             
     }
 
     useEffect(() => {

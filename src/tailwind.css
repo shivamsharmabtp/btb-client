@@ -9,7 +9,7 @@
 
 @variants responsive {
     .videoPreviewBox {
-        width: 360px;
+        width: 340px;
         min-height : 200px;
     }
     .videoPreviewBoxMob{
