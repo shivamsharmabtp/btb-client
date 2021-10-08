@@ -4,6 +4,7 @@ import profilePic from './../containers/Images/userAvatar.png';
 import SideMenu from './SideMenu';
 import SearchBar from './SearchBar';
 import MenuIcon from '@material-ui/icons/Menu';
+import constants from '../constants';
 
 export default (props) => {
     const {query} = props;
@@ -28,8 +29,8 @@ export default (props) => {
                         <MenuIcon />
                     </IconButton>
                     <a href="/">
-                        <div className="font-bold text-2xl md:hidden"><span className="text-red-600">R</span>T</div>
-                        <div className="font-bold text-2xl hidden md:block"><span className="text-red-600">Reaction</span>Tube</div>
+                        <div className="font-bold text-2xl md:hidden"><span className="text-blue-600">{constants.getTitle('letter')}</span>T</div>
+                        <div className="font-bold text-2xl hidden md:block"><span className="text-blue-600">{constants.getTitle('camel')}</span>Tube</div>
                     </a>
                 </div>
                 <SearchBar query={query} />

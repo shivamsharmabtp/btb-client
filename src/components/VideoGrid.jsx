@@ -13,9 +13,9 @@ export default (props) => {
     async function loadMore(page){
         let url =  '';
         if(props.type === 'recommended'){
-            url = `${constants.BASE_PATH}/video/search/recommended?page=${page}&title=${props.title}`;
+            url = `${constants.BASE_PATH()}/video/search/recommended?page=${page}&title=${props.title}`;
         }else{
-            url = `${constants.BASE_PATH}/video/search/homePage?page=${page}`;
+            url = `${constants.BASE_PATH()}/video/search/homePage?page=${page}`;
         }
         let videos = await fetch(url);
         videos = await videos.json();

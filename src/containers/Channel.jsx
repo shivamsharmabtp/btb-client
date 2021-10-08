@@ -12,7 +12,7 @@ export default () => {
     const [done, setDone] = useState(false);
 
     useEffect(() => {
-        fetch(`${BASE_PATH}/channel/all`)
+        fetch(`${BASE_PATH()}/channel/all`)
             .then((response) => response.json())
             .then((data) => {
                 setChannels(data);
@@ -20,7 +20,7 @@ export default () => {
     }, []);
 
     function saveChannel(){
-        fetch(`${BASE_PATH}/channel/add/request`, {
+        fetch(`${BASE_PATH()}/channel/add/request`, {
             method : 'POST',
             headers: {
                 'Content-Type': 'application/json'

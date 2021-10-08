@@ -10,7 +10,7 @@ export default (props) => {
         textOverflow: 'ellipsis',
         display: '-webkit-box',
         WebkitLineClamp: 2, /* number of lines to show */
-        '-webkit-box-orient': 'vertical'
+        WebkitBoxOrient: 'vertical'
     }
 
     return (

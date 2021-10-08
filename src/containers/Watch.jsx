@@ -14,7 +14,7 @@ export default (props) => {
     const [details, setDetails] = useState({loaded : false});
 
     function loadDetails(){
-        fetch(`${constants.BASE_PATH}/video/details/${queryParams.v}`)
+        fetch(`${constants.BASE_PATH()}/video/details/${queryParams.v}`)
                 .then(response => response.json())
                 .then(data => {
                     setDetails({...data, loaded : true});

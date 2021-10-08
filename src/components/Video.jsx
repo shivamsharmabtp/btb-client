@@ -111,8 +111,8 @@ export default (props) => {
             <ContainerDimensions>
                 {
                     props.loaded ? 
-                        (props.videoUrlFetched && false) ? 
-                                (props.details.inDb && false) ?
+                        (props.videoUrlFetched && window.tb === 'btb') ? 
+                                (props.details.inDb) ?
                                 ({width}) => htmlPlayer(width, props.videoUrl, media, props.videoId) :
                             ({width}) => notAvailablePlayer(width) : 
                         ({width}) => ytPlayer(width, props.videoId, props.controls) :

@@ -12,7 +12,7 @@ export default (props) => {
     const [totalCommentCount, setTotalCommentCount] = useState();
 
     async function loadMore(page){
-        let url = `${constants.BASE_PATH}/comment/threads/getAll/video/${props.videoId}?page=${page}`;
+        let url = `${constants.BASE_PATH()}/comment/threads/getAll/video/${props.videoId}?page=${page}`;
         let commentsData = await fetch(url);
         commentsData = (await commentsData.json());
         let {comments, totalComments} = commentsData;

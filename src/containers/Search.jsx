@@ -17,7 +17,7 @@ export default (props) => {
     const [noResult, setNoResult] = useState(false);
 
     async function loadMore(page){
-        const data = await fetch(`${constants.BASE_PATH}/video/search/main?page=${page}&query=${queryParams.query}`);
+        const data = await fetch(`${constants.BASE_PATH()}/video/search/main?page=${page}&query=${queryParams.query}`);
         let {videos, hasMore} = await data.json();
         setVideoData([...new Set(videoData.concat(videos))]);
         setHasMore(hasMore);

@@ -8,7 +8,7 @@ export default (props) => {
 
     function search(e){
         if(query !== '' && e.key !== 'Enter'){
-            fetch(`${constants.BASE_PATH}/video/search/suggestions?query=${query}`)
+            fetch(`${constants.BASE_PATH()}/video/search/suggestions?query=${query}`)
                 .then(response => response.json())
                 .then(data => {
                     setResults(data);

@@ -17,7 +17,7 @@ export default (props) => {
     const [details, setDetails] = useState({});
 
     const loadDetails = async () => {
-        let url = `${constants.BASE_PATH}/spRadio/getRandomUrlInfo`
+        let url = `${constants.BASE_PATH()}/spRadio/getRandomUrlInfo`
         if(queryParams.refresh) url += '?refresh=' + queryParams.refresh;
         else if(queryParams.reset) url += '?reset=true&prevTitle=' + queryParams.prevTitle;
         let response = await fetch(url);

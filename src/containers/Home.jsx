@@ -4,7 +4,8 @@ import Header from './../components/Header';
 import VideoGrid from './../components/VideoGrid';
 
 export default () => {
-    console.log(process.env.NODE_ENV);
+    console.log('Env = ' + process.env.NODE_ENV);
+    console.log('Tb = ' + window.tb);
     return (
         <>
         <Header />

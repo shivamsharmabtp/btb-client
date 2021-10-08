@@ -8,7 +8,7 @@ export default (props) => {
     const [details, setDetails] = useState({});
 
     function loadDetails(){
-        fetch(`${constants.BASE_PATH}/tv/randomVideo`)
+        fetch(`${constants.BASE_PATH()}/tv/randomVideo`)
                 .then(response => response.json())
                 .then(data => {
                     setDetails({...data, loaded : true});

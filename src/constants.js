@@ -1,5 +1,31 @@
 module.exports = {
-    BASE_PATH : 'http://159.89.98.5:5151/btb/api',
+    BASE_PATH : () => {
+        if(window.env === 'local'){
+            return 'http://localhost:5151/btb/api'
+        }else{
+            return 'http://159.89.98.5:5151/btb/api'
+        }
+    },
+    getTitle : (type) => {
+        if(window.tb === 'btb'){
+            if(type === 'letter')
+                return 'B';
+            else if(type === 'camel')
+                return 'Bhakti'
+        }else{
+            if(type === 'letter')
+                return 'R';
+            else if(type === 'camel')
+                return 'Reaction'
+        }
+    },
+    setTitle : () => {
+        if(window.tb === 'btb'){
+            document.title = 'BhaktiTube - Pilgrimage of Swans'
+        }else{
+            document.title = 'ReactionTube - Checkout latest Reaction Videos'
+        }
+    },
     getImgFromThumbnail : (thumbnails, size) => {
         let pics, url = 'https://i.ytimg.com/vi/mHO3Bspyxqo/mqdefault.jpg';
         if(thumbnails && thumbnails.length){
