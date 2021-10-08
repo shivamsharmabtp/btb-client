@@ -21,7 +21,11 @@ const App = () => {
   }else if(origin.includes('reactiontube')){
     window.env='prod'
     window.tb = 'rtb'
-  }else {
+  }else if (origin.includes('bhaktitube')){
+    window.env = 'prod'
+    window.tb = 'btb'
+  }
+  else {
     window.env = 'prod'
     window.tb = 'btb'
   }
